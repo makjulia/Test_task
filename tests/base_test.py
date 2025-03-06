@@ -1,4 +1,3 @@
-from selenium import webdriver
 from pages.main_page import SearchHelper, SeacrhLocators
 
 
@@ -10,7 +9,7 @@ def get_len_max_elem(iterable):
     return len(max(iterable, key=len))
 
 
-def func(browser):
+def test_func(browser):
     main_page = SearchHelper(browser)
     main_page.open()
 
@@ -34,7 +33,3 @@ def func(browser):
     main_page.enter_word(SeacrhLocators.LOCATOR_MESSAGE, f'{count_el}\n{max_len}')
 
     main_page.click_on_the_button(SeacrhLocators.LOCATOR_BUTTON)
-
-
-if __name__ == "__main__":
-    func(webdriver.Chrome())

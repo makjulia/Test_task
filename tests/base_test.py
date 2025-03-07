@@ -5,8 +5,8 @@ def get_count_elements(iterable):
     return len(iterable)
 
 
-def get_len_max_elem(iterable):
-    return len(max(iterable, key=len))
+def get_elem_with_max_len(iterable):
+    return max(iterable, key=len)
 
 
 def test_func(browser):
@@ -28,8 +28,11 @@ def test_func(browser):
 
     auto_list = main_page.check_tools(SeacrhLocators.LOCATOR_LIST_TOOLS)
     count_el = get_count_elements(auto_list)
-    max_len = get_len_max_elem(auto_list)
+    el_with_max_len = get_elem_with_max_len(auto_list)
 
-    main_page.enter_word(SeacrhLocators.LOCATOR_MESSAGE, f'{count_el}\n{max_len}')
+    main_page.enter_word(SeacrhLocators.LOCATOR_MESSAGE, f'{count_el}\n{el_with_max_len}')
 
     main_page.click_on_the_button(SeacrhLocators.LOCATOR_BUTTON)
+
+    assert count_el == 5
+    assert el_with_max_len == "Katalon Studio"

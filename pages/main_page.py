@@ -33,14 +33,15 @@ class SearchHelper(BasePage):
         check_bar = [x.text for x in auto_tools if len(x.text) > 0]
         return check_bar
 
-    # Методы для определения кол-ва инструментов в Automation tools
+    # Метод для определения кол-ва инструментов в Automation tools
     def get_count_elements(self, iterable):
         return len(iterable)
-
+    #Метод для определения max длинной строчки в Automation tools
     def get_len_max_elem(self, iterable):
         return len(max(iterable, key=len))
 
-    def scroll_page(self, t=2):
+    # Скроллинг страницы
+    def scroll_page(self, t=1):
          scroll = self.driver.execute_script("window.scrollBy(0, 500)")
          time.sleep(t)
          return scroll

@@ -10,8 +10,9 @@ def browser():
    yield browser
    alert_obj = browser.switch_to.alert
    msg = alert_obj.text
-   print(msg)
    assert msg == 'Message received!'
+   print(f'\nПоявился алерт с текстом {msg}\nВ поле Message выводится количество инструментов = 5 и название '
+         f'инструмента max длиной Katalon Studio')
    time.sleep(10)
    print("\nquit browser..")
    browser.quit()

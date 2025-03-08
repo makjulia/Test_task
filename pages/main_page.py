@@ -19,26 +19,30 @@ class SeacrhLocators:
 
 class SearchHelper(BasePage):
 
+    # Метод для поиска элемента на странице и заполнения поля
     def enter_word(self, locator, word):
         search_field = self.find_element(locator)
         search_field.click()
         search_field.send_keys(word)
         return search_field
 
+    # Метод для нажатия на кнопку
     def click_on_the_button(self, locator):
         return self.find_element(locator).click()
 
+    # Метод для поиска элементов списка Automation tools
     def check_tools(self, locator):
         auto_tools = self.find_elements(locator)
         check_bar = [x.text for x in auto_tools if len(x.text) > 0]
         return check_bar
 
-    # Метод для определения кол-ва инструментов в Automation tools
+    # Метод для определения кол-ва элементов в Automation tools
     def get_count_elements(self, iterable):
         return len(iterable)
+
     #Метод для определения max длинной строчки в Automation tools
-    def get_len_max_elem(self, iterable):
-        return len(max(iterable, key=len))
+    def get_elem_with_max_len(self, iterable):
+        return max(iterable, key=len)
 
     # Скроллинг страницы
     def scroll_page(self, t=1):

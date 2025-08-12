@@ -1,18 +1,14 @@
-import time
 import pytest
 from selenium import webdriver
+
+from pages.main_page import SearchHelper
+
+pytest_plugins = ["fixtures.data_fixtures",
+                  "fixtures.open_page_fixtures"]
 
 
 @pytest.fixture(scope="session")
 def browser():
-   print("\nstart browser for test..")
-   browser = webdriver.Chrome()
-   yield browser
-   alert_obj = browser.switch_to.alert
-   msg = alert_obj.text
-   assert msg == 'Message received!'
-   print(f'\nПоявился алерт с текстом {msg}\nВ поле Message выводится количество инструментов = 5 и название '
-         f'инструмента max длиной Katalon Studio')
-   time.sleep(10)
-   print("\nquit browser..")
-   browser.quit()
+    browser = webdriver.Chrome()
+    yield browser
+    browser.quit()
